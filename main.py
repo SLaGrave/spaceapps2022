@@ -1,16 +1,18 @@
+# standard libs
+from threading import Thread
 import logging
 logging.getLogger().setLevel(logging.DEBUG)
 
+# 3rd-party libs
+
+# custom libs
 from src import *
+from src.gui.run import run_gui
 
-from pyray import *
 
-request_juno_cam_img("https://www.missionjuno.swri.edu/junocam/processing?id=13926")
+if __name__ == "__main__":
 
-init_window(800, 450, "Hello")
-while not window_should_close():
-    begin_drawing()
-    clear_background(WHITE)
-    draw_text("Hello world", 190, 200, 20, VIOLET)
-    end_drawing()
-close_window()
+    # data init
+
+    
+    run_gui()
