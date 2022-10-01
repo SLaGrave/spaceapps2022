@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 # standard libs
 from threading import Thread
 import logging
