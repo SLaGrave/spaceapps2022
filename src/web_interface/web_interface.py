@@ -5,6 +5,8 @@ import io
 import json
 import logging
 
+from ..config_parse import TMPDIR
+
 def request_juno_cam_img(share_link: str) -> dict:
     """
     Parameters
@@ -42,7 +44,8 @@ def request_juno_cam_img(share_link: str) -> dict:
         metadata_json = json.loads(m.read())
         data_set_id = metadata_json["DATA_SET_ID"]
 
-    output_dir = f"./tmp/{data_set_id}/"
+    output_dir = f"{TMPDIR}/{data_set_id}/"
+    print(output_dir)
     metadata_zip.extractall(output_dir)
 
     # Thumbnail
