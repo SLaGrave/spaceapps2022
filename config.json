@@ -1,0 +1,6 @@
+{
+    "local_dir": "./files/local",
+    "script_dir": "./files/scripts",
+    "tmp_dir": "./files/tmp",
+    "api_key": "123abc"
+}
