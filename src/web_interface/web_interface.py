@@ -3,7 +3,7 @@ import re
 import zipfile
 import io
 import json
-from PIL import Image
+import logging
 
 def request_juno_cam_img(share_link: str) -> dict:
     """
@@ -15,9 +15,20 @@ def request_juno_cam_img(share_link: str) -> dict:
     -------
     `dict` of filenames including thumbnail, metadata, and images
     """
-    raw_html = requests.get(share_link)
+    try:
+        raw_html = requests.get(share_link)
+    except Exception as err:
+        logging.warning(err)
+        return
+    if not raw_html.ok:
+        logging.warning(f"Failed request with response: {raw_html.status_code}")
+        return
     img_str = f'<a href="(.*?)" target'
     img_ids = re.findall(img_str, raw_html.text)
+    if len(img_ids) < 3:
+        logging.warning(f"Failed request: bad endpoint")
+        return
+
     thumbnail_id = img_ids[0]
     metadata_id = img_ids[1]
     image_set_id = img_ids[2]
