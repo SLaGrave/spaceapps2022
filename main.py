@@ -6,6 +6,8 @@ from PIL import Image
 
 from src import *
 
+request_juno_cam_img("https://www.missionjuno.swri.edu/junocam/processing?id=13926")
+
 # Loop looks like this
 # Load image
 im = Image.open("pixmap.png")
