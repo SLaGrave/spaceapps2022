@@ -1,4 +1,5 @@
 cffi==1.15.1
 inflection==0.5.1
+Pillow==9.2.0
 pycparser==2.21
 raylib==4.2.1.1
