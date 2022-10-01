@@ -63,5 +63,3 @@ def request_juno_cam_img(share_link: str) -> dict:
     }
 
     return filenames
-
-request_juno_cam_img("https://www.missionjuno.swri.edu/junocam/processing?id=13926")
