@@ -6,7 +6,14 @@ from PIL import Image
 
 from src import *
 
-
-im = combine_rgb("pixmap", mode="RGB", scale=(1, 0.3, 5))
-im.filter(filters[0](radius=5))
+# Loop looks like this
+# Load image
+im = Image.open("pixmap.png")
+# Run before
+im = run_custom_before("./test.py", im)
+# Run any filters
+im = im.filter(filters[0]())
+# Run after
+im = run_custom_after("./test.py", im)
+# Show it
 im.show()
