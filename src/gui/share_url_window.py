@@ -14,9 +14,9 @@ class ShareURLWindow(Frame):
         self.url_entry.grid(column=0, row=1)
         self.go_button = ttk.Button(self, text="Go", command=self.go_pressed)
         self.go_button.grid(column=1, row=1)
+        self.filename_dict = None
     
     def go_pressed(self):
         # Make the call
-        request_juno_cam_img(self.url_entry.get())
-        # Go to the next scene
+        self.filename_dict = request_juno_cam_img(self.url_entry.get())
         
