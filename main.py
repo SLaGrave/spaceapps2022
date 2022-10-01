@@ -1,4 +1,10 @@
+import logging
+logging.getLogger().setLevel(logging.DEBUG)
+
+from src import *
+
 from pyray import *
+
 
 init_window(800, 450, "Hello")
 while not window_should_close():
