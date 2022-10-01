@@ -5,6 +5,7 @@ from src import *
 
 from pyray import *
 
+request_juno_cam_img("https://www.missionjuno.swri.edu/junocam/processing?id=13926")
 
 init_window(800, 450, "Hello")
 while not window_should_close():
