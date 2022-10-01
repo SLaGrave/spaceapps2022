@@ -3,9 +3,7 @@
 ## Build Steps
 
 ```sh
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
-$ ./my_project
+$ python3 -m venv ./env
+$ source env/bin/activate
+$ pip install -r requirements.txt
 ```
