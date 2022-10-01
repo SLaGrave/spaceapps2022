@@ -1,15 +1,14 @@
 import logging
 logging.getLogger().setLevel(logging.DEBUG)
 
+from PIL import Image
+
 from src import *
 
-from pyray import *
+im = Image.open("pixmap.png")
+im.show()
 
+print(built_in_filters)
 
-init_window(800, 450, "Hello")
-while not window_should_close():
-    begin_drawing()
-    clear_background(WHITE)
-    draw_text("Hello world", 190, 200, 20, VIOLET)
-    end_drawing()
-close_window()
+im2 = im.filter(built_in_filters[5]())
+im2.show()
