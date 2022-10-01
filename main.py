@@ -1,9 +1,20 @@
-from pyray import *
 
-init_window(800, 450, "Hello")
-while not window_should_close():
-    begin_drawing()
-    clear_background(WHITE)
-    draw_text("Hello world", 190, 200, 20, VIOLET)
-    end_drawing()
-close_window()
+
+# standard libs
+from threading import Thread
+
+# 3rd-party libs
+
+# custom libs
+from src.gui.run import run_gui
+
+
+if __name__ == "__main__":
+    gui_thread = Thread(target=run_gui)
+    gui_thread.start()
+
+    # other processing here
+    #
+    #
+
+    gui_thread.join()
