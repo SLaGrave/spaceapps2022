@@ -21,7 +21,7 @@ class BuiltInFilter():
         return f"<FILTER: {self.name}, {self.params}>"
 
 
-built_in_filters = [
+filters = [
     BuiltInFilter("Gaussian Blur", ImageFilter.GaussianBlur, {"radius": "int"}),
     BuiltInFilter("Median Filter", ImageFilter.MedianFilter, {"size": "int"}),
     BuiltInFilter("Min Filter", ImageFilter.MinFilter, {"size": "int"}),
