@@ -63,6 +63,7 @@ def request_juno_cam_img(share_link: str) -> dict:
         "thumbnail": thumbnail_dir,
         "metadata": f"{output_dir}DataSet",
         "imageset": f"{output_dir}ImageSet",
+        "rgb_base": metadata_json["FILE_NAME"]
     }
 
     return filenames

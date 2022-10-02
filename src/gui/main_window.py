@@ -1,22 +1,25 @@
+import datetime
 from tkinter import *
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 from turtle import update
 from PIL import ImageTk, Image
+from src.config_parse import LOCALDIR
 from src.gui.filter_adder_frame import FilterAdderFrame
 
 from src.gui.filter_list import FilterList
 from src.img_proc.custom_parser import run_custom_after, run_custom_before
 from .script_editor_frame import ScriptEditorFrame
-from ..img_proc import filters
+from ..img_proc import filters, combine_rgb
 
 class MainWindow:
     """Primary window for ImJo Editor."""
-    def __init__(self, img_filename):
+    def __init__(self, img_filename, f):
         self.mainwindow = Tk()
         self.mainwindow.state("zoomed")
         # self.mainwindow.resizable(False, False)
         self.img_filename = img_filename
+        self.f = f
 
         # center on the screen
         screen_width = self.mainwindow.winfo_screenwidth()
@@ -24,14 +27,14 @@ class MainWindow:
         self.mainwindow.geometry("%dx%d" % (screen_width, screen_height))
 
         # create main frames
-        self.img_frame =   Frame(self.mainwindow, bg='cyan')
+        self.img_frame =   Frame(self.mainwindow)
         code_frm = ttk.Notebook(self.mainwindow)
         self.script_editor = ScriptEditorFrame(self.mainwindow)
         self.filter_list = FilterList(self.mainwindow)
-        code_frm.add(self.script_editor, text="Script")
         code_frm.add(self.filter_list, text="Filters")
+        code_frm.add(self.script_editor, text="Script")
         fx_frm = FilterAdderFrame(self.mainwindow, self.filter_list)
-        other_frm = Frame(fx_frm, bg='magenta')
+        other_frm = Frame(fx_frm)
 
         # Give 2/3 of row space and 2/3 of column space to image layout
         self.mainwindow.rowconfigure(2)
@@ -57,7 +60,7 @@ class MainWindow:
 
         # create a canvas for image
         self.img_frame.update()
-        self.image = Image.open(self.img_filename)
+        self.image = combine_rgb(self.img_filename, self.f)
         self.imwidth  = self.image.width
         self.imheight = self.image.height
         
@@ -74,7 +77,7 @@ class MainWindow:
             self.imheight = int(self.imheight * imfrmwidth/self.imwidth)
             self.imwidth = imfrmwidth
 
-        self.img_canv = Canvas(self.img_frame, bg='darkgray')
+        self.img_canv = Canvas(self.img_frame)
         self.img_canv.image = ImageTk.PhotoImage(self.image.resize((self.imwidth, self.imheight), Image.ANTIALIAS), master=self.img_canv)
         self.img_canv.create_image(0, 0, image=self.img_canv.image, anchor='nw')
         self.img_canv.pack(side=TOP, fill=BOTH, expand=1)
@@ -91,10 +94,13 @@ class MainWindow:
 
 
     def save_img(self):
-        pass
+        self.image.save(f"{LOCALDIR}/{datetime.datetime.now()}.png")
 
     def run_command(self):
-        self.image = run_custom_before("./test.py", self.image)
-        self.image = run_custom_after("./test.py", self.image)
+        self.image = run_custom_before(self.script_editor.get_script(), self.image)
+        # Run all filters
+        for f in self.filter_list.objects:
+            self.image = self.image.filter(f)
+        self.image = run_custom_after(self.script_editor.get_script(), self.image)
         self.img_canv.image = ImageTk.PhotoImage(self.image.resize((self.imwidth, self.imheight), Image.ANTIALIAS), master=self.img_canv)
         self.img_canv.create_image(0, 0, image=self.img_canv.image, anchor='nw')

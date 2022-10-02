@@ -25,6 +25,6 @@ class ShareURLWindow(Frame):
     def go_pressed(self):
         # Make the call
         self.filename_dict = request_juno_cam_img(self.url_entry.get())
-        print(type(self.filename_dict["thumbnail"]), self.filename_dict["thumbnail"])
-        m = MainWindow(self.filename_dict["thumbnail"])
+        print(self.filename_dict)
+        m = MainWindow(self.filename_dict["imageset"], self.filename_dict["rgb_base"])
         

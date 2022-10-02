@@ -21,6 +21,6 @@ class FilterFrame(ttk.Frame):
         self.add_button.grid(row=len(filter.params)+1, column=0, columnspan=2)
 
     def add_button_command(self):
-        self.filter_list.objects.append(self.filter(**{key: float(value.get()) for key, value in self.params.items()}))
+        self.filter_list.objects.append(self.filter(**{key: int(float(value.get())) for key, value in self.params.items()}))
         self.filter_list.update_self()
         

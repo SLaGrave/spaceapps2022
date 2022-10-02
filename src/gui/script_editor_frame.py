@@ -14,6 +14,13 @@ class ScriptEditorFrame(ttk.Frame):
         self.filepath = ""
         self.name_entry = None
         self.ask_name_frame = None
+        self.text_editor.insert("1.0",
+"""def before(image):
+    return image
+    
+def after(image):
+    return image
+        """)
 
     def open_directory(self):
         """
