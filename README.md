@@ -1,6 +1,6 @@
 # Dijon
 
-`Dijon` was created by team [Jupiter Isn't Real](https://2022.spaceappschallenge.org/challenges/2022-challenges/jovian-system/teams/jupiter-isnt-real/project) ![logo](./logo.jpeg =250x250) for the [2022 NASA Space Apps Challenge](https://www.spaceappschallenge.org/)
+`Dijon` was created by team [Jupiter Isn't Real](https://2022.spaceappschallenge.org/challenges/2022-challenges/jovian-system/teams/jupiter-isnt-real/project) <img src=".ogo.jpeg" width="200" height="200"> for the [2022 NASA Space Apps Challenge](https://www.spaceappschallenge.org/)
 
 ---
 
