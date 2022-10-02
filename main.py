@@ -11,5 +11,5 @@ from src.gui.main_window import MainWindow
 
 
 if __name__ == "__main__":
-    mwindow = MainWindow()
+    mwindow = MainWindow("assets/jov1.png")
     mwindow.main_window()
