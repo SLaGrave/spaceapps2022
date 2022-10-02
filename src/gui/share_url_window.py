@@ -7,10 +7,10 @@ from ..web_interface import request_juno_cam_img
 class ShareURLWindow(Frame):
     def __init__(self, master):
         super().__init__(master)
-        master.title("imjo")
+        master.title("dijon")
         self.columnconfigure(index=2)
         self.rowconfigure(index=4)
-        self.explain_label = ttk.Label(self, text="Imjo is a tool to download and edit images of Jupiter from NASA's JunoCam.\nThese images can be obtained from https://www.missionjuno.swri.edu/junocam/processing.\nSelect the image you want, click 'Share Link', and paste that below.")
+        self.explain_label = ttk.Label(self, text="DIJON is a tool to download and edit images of Jupiter from NASA's JunoCam.\nThese images can be obtained from https://www.missionjuno.swri.edu/junocam/processing.\nSelect the image you want, click 'Share Link', and paste that below.")
         self.explain_label.grid(column=0, row=0)
         self.open_button = ttk.Button(self, text="Open SWRI link", command=lambda: webbrowser.open("https://www.missionjuno.swri.edu/junocam/processing"))
         self.open_button.grid(column=0, row=1)
