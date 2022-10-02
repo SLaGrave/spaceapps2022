@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 from turtle import update
 from PIL import ImageTk, Image
+from src.gui.filter_adder_frame import FilterAdderFrame
 
 from src.gui.filter_list import FilterList
 from src.img_proc.custom_parser import run_custom_after, run_custom_before
@@ -28,29 +29,25 @@ class MainWindow:
         self.filter_list = FilterList(self.mainwindow)
         code_frm.add(self.script_editor, text="Script")
         code_frm.add(self.filter_list, text="Filters")
-        self.filter_list.objects = filters
-        self.filter_list.update_self()
-        fx_frm =    Frame(self.mainwindow, bg='yellow')
-        other_frm = Frame(self.mainwindow, bg='magenta')
+        fx_frm = FilterAdderFrame(self.mainwindow, self.filter_list)
+        other_frm = Frame(fx_frm, bg='magenta')
 
         # Give 2/3 of row space and 2/3 of column space to image layout
-        self.mainwindow.grid_rowconfigure(0, weight=2)
+        self.mainwindow.rowconfigure(2)
+        self.mainwindow.columnconfigure(2)
+        self.mainwindow.grid_rowconfigure(0, weight=4)
         self.mainwindow.grid_rowconfigure(1, weight=1)
         self.mainwindow.grid_columnconfigure(0, weight=2)
         self.mainwindow.grid_columnconfigure(1, weight=1)
-        
 
         self.img_frame.grid(row=0, column=0, sticky="nsew")
         code_frm.grid(row=0, column=1, sticky="nsew")
-        fx_frm.grid(row=1, column=0, sticky="nsew")
-        other_frm.grid(row=1, column=1, sticky="nsew")
-
-
-
+        fx_frm.grid(row=2, column=0, columnspan=2, sticky="nsew")
+        other_frm.pack(side=RIGHT)
 
         # put elements in other frame
-        self.script_name = StringVar(fx_frm, "not ImJo")
-        self.l = Label(fx_frm, textvariable=self.script_name).grid(column=0, row=3)
+        #self.script_name = StringVar(fx_frm, "not ImJo")
+        #self.l = Label(fx_frm, textvariable=self.script_name).grid(column=0, row=3)
 
         ttk.Button(other_frm, text="Run", command=self.run_command).grid(column=0, row=0)
         ttk.Button(other_frm, text="Save", command=self.save_img).grid(column=0, row=1)
@@ -86,7 +83,7 @@ class MainWindow:
 
 
 
-        self.mainwindow.title(self.script_name.get())
+        self.mainwindow.title("dijon")
 
     def get_script(self):
         self.script_name.set(askopenfilename())

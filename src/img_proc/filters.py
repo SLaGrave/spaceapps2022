@@ -29,3 +29,5 @@ filters = [
     BuiltInFilter("Mode Filter", ImageFilter.ModeFilter, {"size": "int"}),
     BuiltInFilter("Unsharp Mask", ImageFilter.UnsharpMask, {"radius": "int", "percent": "int", "threshold": "int"}),
 ]
+
+filters[0](radius=5)
