@@ -43,7 +43,7 @@ class MainWindow:
 
         self.img_frame.grid(row=0, column=0, sticky="nsew")
         code_frm.grid(row=0, column=1, sticky="nsew")
-        fx_frm.grid(row=2, column=0, columnspan=2, sticky="nsew")
+        fx_frm.grid(row=2, column=0, columnspan=2, sticky="nsew", padx=50, pady=50)
         other_frm.pack(side=RIGHT)
 
         # put elements in other frame

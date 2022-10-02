@@ -6,7 +6,7 @@ class ScriptEditorFrame(ttk.Frame):
         self.text_editor = Text(self, height=20)
         self.rowconfigure(index=2)
         self.columnconfigure(index=2)
-        self.text_editor.grid(row=0, column=0, columnspan=2)
+        self.text_editor.grid(row=0, column=0, columnspan=2, sticky="nsew")
         self.save_script_button = ttk.Button(self, text="Save Script", command=self.open_directory)
         self.save_script_button.grid(row=1, column=0)
         self.load_script_button = ttk.Button(self, text="Load Script", command=self.load_script)

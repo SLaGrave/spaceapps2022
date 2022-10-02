@@ -14,7 +14,7 @@ class FilterFrame(ttk.Frame):
         for i, key in enumerate(filter.params):
             param_name_label = ttk.Label(master=self, text=key)
             param_name_label.grid(row=i+1, column=0)
-            self.params[key] = ttk.Entry(master=self)
+            self.params[key] = ttk.Entry(master=self, width=5)
             self.params[key].grid(row=i+1, column=1)
 
         self.add_button = ttk.Button(master=self, text="Add", command=self.add_button_command)

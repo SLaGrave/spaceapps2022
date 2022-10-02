@@ -9,5 +9,5 @@ class FilterAdderFrame(ttk.Frame):
         super().__init__(master)
         for filter in filters:
             filter_frame = FilterFrame(master=self, filter=filter, filter_list=filter_list)
-            filter_frame.pack(side=tk.LEFT)
+            filter_frame.pack(side=tk.LEFT, padx=25)
         
