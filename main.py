@@ -1,7 +1,5 @@
 # standard libs
-from threading import Thread
 import logging
-
 logging.getLogger().setLevel(logging.DEBUG)
 
 from tkinter import *
@@ -15,8 +13,7 @@ from src import *
 if __name__ == "__main__":
     root = Tk()
 
-    juan = FilterList(root)
-    juan.objects = filters
-    juan.update_self()
-    juan.grid()
+    url = ShareURLWindow(root)
+    url.pack()
+    
     root.mainloop()
