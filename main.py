@@ -7,12 +7,9 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 # custom libs
 from src import *
-from src.gui.run import run_gui
+from src.gui.main_window import MainWindow
 
 
 if __name__ == "__main__":
-
-    # data init
-
-    
-    run_gui()
+    mwindow = MainWindow()
+    mwindow.main_window()
