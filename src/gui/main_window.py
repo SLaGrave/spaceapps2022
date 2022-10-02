@@ -14,6 +14,7 @@ class MainWindow:
     """Primary window for ImJo Editor."""
     def __init__(self, img_filename):
         self.mainwindow = Tk()
+        self.mainwindow.state("zoomed")
         # self.mainwindow.resizable(False, False)
         self.img_filename = img_filename
 
