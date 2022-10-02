@@ -1,6 +1,4 @@
-from cmath import exp
-from re import L
-from tkinter import BOTH, LEFT, RIGHT, Y, Button, Frame, Label, ttk, Text,Scrollbar, VERTICAL, Canvas
+from tkinter import BOTH, LEFT, RIGHT, W, Y, Button, Frame, Label, ttk, Text,Scrollbar, VERTICAL, Canvas
 
 class FilterList(Frame):
     def __init__(self, master):
@@ -33,5 +31,5 @@ class FilterList(Frame):
         self.new_frame.columnconfigure(2)
         self.new_frame.rowconfigure(len(self.objects))
         for idx, obj in enumerate(self.objects):
-            Button(self.new_frame, text="-", command=magic(obj)).grid(row=idx, column=1)
-            Label(self.new_frame, text=str(obj)).grid(row=idx, column=0)
+            Button(self.new_frame, text="-", command=magic(obj)).grid(row=idx, column=0)
+            Label(self.new_frame, text=str(obj), anchor="w", justify=LEFT).grid(sticky = W, row=idx, column=1)
