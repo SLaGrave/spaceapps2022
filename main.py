@@ -4,7 +4,6 @@ import logging
 logging.getLogger().setLevel(logging.DEBUG)
 
 from tkinter import *
-from src.gui.share_url_window import ShareURLWindow
 
 # 3rd-party libs
 
@@ -15,6 +14,8 @@ from src import *
 if __name__ == "__main__":
     root = Tk()
 
-    juan = ShareURLWindow(root)
+    juan = FilterList(root)
+    juan.objects = ["test", "wow"]
+    juan.update_self()
     juan.grid()
     root.mainloop()
